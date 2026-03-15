@@ -7,7 +7,6 @@ var screen_size
 func _ready() -> void:
 	self.screen_size = get_viewport_rect().size
 
-
 func _physics_process(_delta: float) -> void:
 	self.velocity.x = 0
 	
@@ -20,7 +19,6 @@ func _physics_process(_delta: float) -> void:
 		self.velocity.x -= 1
 	if Input.is_action_pressed("move_right"):
 		self.velocity.x += 1
-
 
 	# Animation logic
 	if self.velocity.x != 0:
