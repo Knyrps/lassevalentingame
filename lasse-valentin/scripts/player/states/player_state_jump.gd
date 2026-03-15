@@ -1,7 +1,4 @@
-extends Node
-class_name PlayerState
-
-var actor: CharacterBody2D
+extends PlayerStateBase
 
 func enter():
 	pass
@@ -20,20 +17,18 @@ func physics_update(delta):
 	else:
 		actor.velocity.y += actor.gravity * delta
 	
-	if Input.is_action_pressed("move_left"):
+	if Input.is_action_pressed("jump"):
 		actor.velocity.x -= 1
-	if Input.is_action_pressed("move_right"):
-		actor.velocity.x += 1
 
 	# Animation logic
 	if actor.velocity.x != 0:
 		actor.velocity.x *= actor.speed
-		$AnimatedSprite2D.play()
+		animated_sprite.play()
 	else:
-		$AnimatedSprite2D.stop()
+		animated_sprite.stop()
 	if actor.velocity.x != 0:
-		$AnimatedSprite2D.animation = "walk"
-		$AnimatedSprite2D.flip_v = false
-		$AnimatedSprite2D.flip_h = actor.velocity.x < 0
+		animated_sprite.animation = "up"
+		animated_sprite.flip_v = false
+		animated_sprite.flip_h = actor.velocity.x < 0
 
 	actor.move_and_slide()

@@ -8,5 +8,8 @@
 [node name="Player" parent="." unique_id=195021681 instance=ExtResource("1_80nbo")]
 position = Vector2(35, 45)
 
+[node name="GroundTest2" parent="." unique_id=307369473 instance=ExtResource("2_e2o6t")]
+position = Vector2(405, 484)
+
 [node name="GroundTest" parent="." unique_id=1686907468 instance=ExtResource("2_e2o6t")]
 position = Vector2(1, 555)
