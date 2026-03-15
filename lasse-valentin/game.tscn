@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://domk6bcg5f6dj"]
+
+[ext_resource type="PackedScene" uid="uid://da3wrbpfjgfnx" path="res://player.tscn" id="1_80nbo"]
+[ext_resource type="PackedScene" uid="uid://cibbdrp5btvie" path="res://ground_test.tscn" id="2_e2o6t"]
+
+[node name="Game" type="Node2D" unique_id=1799346940]
+
+[node name="Player" parent="." unique_id=195021681 instance=ExtResource("1_80nbo")]
+position = Vector2(35, 45)
+
+[node name="GroundTest" parent="." unique_id=1686907468 instance=ExtResource("2_e2o6t")]
+position = Vector2(1, 555)
