@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BlockType" format=3]
+
+[ext_resource type="Script" path="res://scripts/world/block_type.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "stone"
+color = Color(0.5, 0.5, 0.55, 1)
+hardness = 3
+collides = true
+minable = true

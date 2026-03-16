@@ -1,17 +1,30 @@
 [gd_scene format=3 uid="uid://domk6bcg5f6dj"]
 
-[ext_resource type="PackedScene" uid="uid://da3wrbpfjgfnx" path="res://player.tscn" id="1_80nbo"]
-[ext_resource type="PackedScene" uid="uid://cibbdrp5btvie" path="res://ground_test.tscn" id="2_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://da3wrbpfjgfnx" path="res://player.tscn" id="1_player"]
+[ext_resource type="Script" uid="uid://d2ucbckjoq0n0" path="res://scripts/world/world_generator.gd" id="2_world"]
+[ext_resource type="Script" uid="uid://ckduyrago6opu" path="res://scripts/world/mining_system.gd" id="3_mining"]
+[ext_resource type="Resource" path="res://resources/blocks/dirt.tres" id="4_dirt"]
+[ext_resource type="Resource" path="res://resources/blocks/stone.tres" id="5_stone"]
+[ext_resource type="Resource" path="res://resources/blocks/ore.tres" id="6_ore"]
+[ext_resource type="Resource" path="res://resources/blocks/bedrock.tres" id="7_bedrock"]
+[ext_resource type="Resource" path="res://resources/blocks/background.tres" id="8_bg"]
 
-[node name="Game" type="Node2D" unique_id=1799346940]
+[node name="Game" type="Node2D" unique_id=2030989172]
 
-[node name="Player" parent="." unique_id=195021681 instance=ExtResource("1_80nbo")]
-position = Vector2(35, 45)
-speed = 800
-gravity = 2400
+[node name="World" type="Node2D" parent="." unique_id=119907969]
+script = ExtResource("2_world")
+block_types = [ExtResource("4_dirt"), ExtResource("5_stone"), ExtResource("6_ore"), ExtResource("7_bedrock")]
+background_block = ExtResource("8_bg")
 
-[node name="GroundTest2" parent="." unique_id=307369473 instance=ExtResource("2_e2o6t")]
-position = Vector2(405, 484)
+[node name="BackgroundLayer" type="TileMapLayer" parent="World" unique_id=1928979858]
 
-[node name="GroundTest" parent="." unique_id=1686907468 instance=ExtResource("2_e2o6t")]
-position = Vector2(1, 555)
+[node name="TerrainLayer" type="TileMapLayer" parent="World" unique_id=486371683]
+
+[node name="Player" parent="." unique_id=1902532423 instance=ExtResource("1_player")]
+position = Vector2(480, 64)
+
+[node name="MiningSystem" type="Node" parent="." unique_id=753086376]
+script = ExtResource("3_mining")
+terrain_path = NodePath("../World/TerrainLayer")
+background_path = NodePath("../World/BackgroundLayer")
+player_path = NodePath("../Player")
