@@ -6,7 +6,8 @@ func enter():
 	animated_sprite.play()
 
 func physics_update(delta):
-	apply_gravity(delta)
+	# Only apply gravity, never reset velocity.y here — enter() sets the jump impulse
+	actor.velocity.y += actor.gravity * delta
 
 	# Allow air control
 	var direction := get_horizontal_input()

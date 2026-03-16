@@ -18,7 +18,9 @@ func physics_update(_delta):
 	pass
 
 func apply_gravity(delta):
-	if not actor.is_on_floor():
+	if actor.is_on_floor():
+		actor.velocity.y = 0
+	else:
 		actor.velocity.y += actor.gravity * delta
 
 func get_horizontal_input() -> float:
