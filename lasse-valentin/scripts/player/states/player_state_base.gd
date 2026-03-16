@@ -2,17 +2,29 @@ extends Node
 class_name PlayerStateBase
 
 var actor: CharacterBody2D
-# Get the AnimatedSprite2D node from the actor (CharacterBody2D)
 var animated_sprite: AnimatedSprite2D
+var state_machine
 
 func enter():
 	pass
-	
+
 func exit():
 	pass
-	
-func update(delta):
+
+func update(_delta):
 	pass
 
-func physics_update(delta):
+func physics_update(_delta):
 	pass
+
+func apply_gravity(delta):
+	if not actor.is_on_floor():
+		actor.velocity.y += actor.gravity * delta
+
+func get_horizontal_input() -> float:
+	var direction := 0.0
+	if Input.is_action_pressed("move_left"):
+		direction -= 1.0
+	if Input.is_action_pressed("move_right"):
+		direction += 1.0
+	return direction
